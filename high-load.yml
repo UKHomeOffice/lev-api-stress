@@ -1,0 +1,61 @@
+config:
+  target: "{{ $processEnvironment.TARGET_API }}"
+  tls:
+    rejectUnauthorized: false
+    cert: "{{ $processEnvironment.CLIENT_CERT }}"
+    key: "{{ $processEnvironment.CLIENT_KEY }}"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+#    - duration: 60
+#      arrivalRate: 50
+#      rampTo: 200
+  defaults:
+    headers:
+#      x-auth-username: robin
+#      x-auth-aud: artillery
+      Authorization: "Bearer {{ $processEnvironment.TOKEN }}"
+  payload:
+    -
+      path: "./{{ $processEnvironment.SYSNUM }}"
+      fields:
+        - "systemNumber"
+      cast: false
+      skipHeader: true
+    -
+      path: "./{{ $processEnvironment.NAME_DOB }}"
+      fields:
+        - "forename"
+        - "surname"
+        - "dob"
+      cast: false
+      skipHeader: true
+#  variables:
+#    systemNumber:
+#      - "500038139"
+#      - "123456789"
+#      - "999999901"
+#    forename:
+#      - "john"
+#      - "William"
+#    surname:
+#      - "smith"
+#      - "JONES"
+#    dob:
+#      - "2008-08-08"
+#      - "2004-01-01"
+scenarios:
+  - name: "System number search"
+    flow:
+      - get:
+          url: "/api/v0/events/birth/{{ systemNumber }}"
+  - name: "Name/DoB search"
+    flow:
+      - get:
+          url: "/api/v0/events/birth?forenames={{ forename }}&lastname={{ surname }}&dateofbirth={{ dob }}"
+          capture:
+            json: "$[0].systemNumber"
+            as: "id"
+      - think: 3
+      - get:
+          url: "/api/v0/events/birth/{{ id }}"
