@@ -8,3 +8,6 @@
 # config
 *.csv
 config/
+
+# node modules
+node_modules/
