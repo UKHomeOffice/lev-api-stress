@@ -2,8 +2,10 @@
 # dotenv environment variables file
 .env
 
-# logs
+# output
 *.log
+output
+result.*
 
 # config
 *.csv
