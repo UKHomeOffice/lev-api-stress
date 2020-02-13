@@ -4,7 +4,7 @@
   "description": "Stress testing for the lev-api.",
   "main": "./entrypoint.sh",
   "scripts": {
-    "test": "eslint . && mocha test/unit --recursive",
+    "test": "eslint . && mocha test/unit && mocha test/integration",
     "dev": "nodemon -w src -w test -x npm test",
     "postinstall": "mkdir -p output"
   },
@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "chai-each": "0.0.1",
     "chai-fs": "^2.0.0",
     "chai-integer": "^0.1.0",
     "chai-json": "^1.0.0",
