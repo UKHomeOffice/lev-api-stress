@@ -1,5 +1,5 @@
 config:
-  processor: "../../src/randomisor.js"
+  processor: "../../../src/randomisor.js"
   target: "http://localhost:3000"
   phases:
     - duration: "{{ $processEnvironment.ART_DURATION }}"
@@ -7,6 +7,6 @@ config:
 scenarios:
   - name: "Random system number search"
     flow:
-    - function: "getSystemNumber"
-    - get:
-        url: "/randsysnum={{ systemNumber }}"
+      - function: "getSystemNumber"
+      - get:
+          url: "/randsysnum={{ systemNumber }}"
