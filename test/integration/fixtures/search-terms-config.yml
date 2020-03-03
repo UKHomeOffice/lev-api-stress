@@ -1,0 +1,12 @@
+config:
+  processor: "../../../src/randomisor.js"
+  target: "http://localhost:3000"
+  phases:
+    - duration: "{{ $processEnvironment.ART_DURATION }}"
+      arrivalRate: "{{ $processEnvironment.ART_RATE }}"
+scenarios:
+  - name: "Search with random terms"
+    flow:
+      - function: "getSearchTerms"
+      - get:
+          url: "/randsurname={{ surname }}&randfirstnames={{ firstnames }}&randdob={{ dob }}"
