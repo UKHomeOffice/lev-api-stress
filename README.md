@@ -13,11 +13,11 @@ The performance tests can be started with the following command:
 There are two parts to the configuration:
  - `./high-load.yml` - the main config file for [Artillery.io], containing:
    - basic test setup
-   - security details
+   - authentication details
    - config for the phases
    - payload parameters (the information to match)
    - scenarios (what requests to send, and how responses are processed)
- - an extra file supplied to `entry-point.sh`, with security details:
+ - an extra file supplied to `./entrypoint.sh`, with authentication details:
    - an endpoint for the target service
    - an authorization token
    - SSL certificate information
@@ -35,7 +35,8 @@ Normally a mix of these scenarios is run (weighted in favour of the generated
 kind), to force the DB to perform searches (rather than simply read from
 caches). Therefore `404` is considered to be a successful HTTP response code
 (in addition to `200`, obviously). This is quite expected, as there will likely
-always be LEV users searching for records that don't exist.
+always be searches for records that don't exist, e.g. typos, hard to read
+handwriting, etc.
 
 ### Other types of test
 Currently, only the `high-load.yml` file exists - intended to expose the API to
