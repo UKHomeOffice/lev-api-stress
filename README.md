@@ -52,8 +52,17 @@ an arbitrary amount of usage. Other configurations could be created to test for
 specific tolerances and bottlenecks, e.g. DB throttling, API scaling thresholds,
 ingress and other routing thresholds, etc. All of these are currently beyond the
 scope of this project though.
+
+NOTE: recently the [connection pool] option was used to reuse client connections
+which meant once the first few connections were created, very little further
+client processing was required for each request. This allowed us to explore the
+limits of our API and DB resources (rather than sweat the test devices). If the
+client machines start to struggle, the test should be abandoned and the settings
+revised. See the [high CPU warnings] section of the Artillery docs.
  
 
 [LEV API]: https://github.com/UKHomeOffice/lev-api
 [Artillery.io]: https://artillery.io/docs/
 [Config file]: #config-file
+[connection pool]: https://artillery.io/docs/http-reference/#fixed-connection-pool
+[high CPU warnings]: https://artillery.io/docs/faq/#high-cpu-warnings
