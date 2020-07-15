@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export TARGET_API="https://api.qa.notprod.lev.homeoffice.gov.uk"
+
 if [ -z "$1" ] ; then
   echo "Error: expected to be called with a configuration file"
   exit 1
