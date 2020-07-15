@@ -17,11 +17,19 @@ There are two parts to the configuration:
    - config for the phases
    - payload parameters (the information to match)
    - scenarios (what requests to send, and how responses are processed)
- - an extra file supplied to `./entrypoint.sh`, with authentication details:
+ - a [Config file] supplied to `./entrypoint.sh`, with authentication details:
    - an endpoint for the target service
    - an authorization token
    - SSL certificate information
    - files with search terms
+
+### Config file
+An example config file is provided (`./config-example.template.conf`). This
+shows and describes the supported configuration options. Copies of this file
+can be created in a config directory (`./config`) if you wish, as this folder
+is ignored by git. Obviously **DO NOT commit potentially sensitive information
+to github**!! The necessary `.crt` and `.key` files can also be placed in the
+`./config` directory.
 
 ### A note about scenarios
 Each scenario defines a type of dummy user action which Artillery will mimic
@@ -48,3 +56,4 @@ scope of this project though.
 
 [LEV API]: https://github.com/UKHomeOffice/lev-api
 [Artillery.io]: https://artillery.io/docs/
+[Config file]: #config-file
