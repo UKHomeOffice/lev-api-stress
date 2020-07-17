@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export TARGET_API="https://api.qa.notprod.lev.homeoffice.gov.uk"
+export PATH="$PATH:./node_modules/.bin"
 
 if [ -z "$1" ] ; then
   echo "Error: expected to be called with a configuration file"
