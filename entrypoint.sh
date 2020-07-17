@@ -1,7 +1,16 @@
 #!/bin/bash
 
+export TARGET_API="https://api.qa.notprod.lev.homeoffice.gov.uk"
+export PATH="$PATH:./node_modules/.bin"
+
 if [ -z "$1" ] ; then
   echo "Error: expected to be called with a configuration file"
+  exit 1
+fi
+if ! artillery -V &> /dev/null ; then
+  echo "Error: Artillery is not installed, either run:
+  - npm i # to install it locally, or
+  - npm install -g artillery # for global installation"
   exit 1
 fi
 
