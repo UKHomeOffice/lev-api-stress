@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/UKHomeOffice/lev-api-stress#readme",
   "dependencies": {
-    "artillery": "^1.6.0-27"
+    "artillery": "^1.7.9"
   },
   "devDependencies": {
     "chai": "^4.2.0",
