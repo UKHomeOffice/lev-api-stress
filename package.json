@@ -6,7 +6,9 @@
   "scripts": {
     "test": "eslint . && mocha test/unit && mocha test/integration",
     "dev": "nodemon -w src -w test -x npm test",
-    "postinstall": "mkdir -p output"
+    "postinstall": "mkdir -p output",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -24,7 +26,8 @@
   },
   "homepage": "https://github.com/UKHomeOffice/lev-api-stress#readme",
   "dependencies": {
-    "artillery": "^1.6.0-27"
+    "artillery": "^1.6.0",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -47,5 +50,6 @@
     "recursive": true,
     "require": "test/common.js",
     "reporter": "spec"
-  }
+  },
+  "snyk": true
 }
